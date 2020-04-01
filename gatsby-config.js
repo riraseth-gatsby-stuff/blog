@@ -9,10 +9,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages/`
+        name: `posts`,
+        path: `${__dirname}/src/posts/`
       }
     },
-    `gatsby-plugin-mdx`
+    `gatsby-plugin-mdx`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-playground`
   ]
 };
