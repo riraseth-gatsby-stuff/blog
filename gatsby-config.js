@@ -16,6 +16,7 @@ module.exports = {
     `gatsby-plugin-mdx`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-playground`
+    `gatsby-plugin-playground`,
+    `gatsby-plugin-transition-link`
   ]
 };
