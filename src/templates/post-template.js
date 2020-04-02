@@ -6,8 +6,49 @@ import Image from 'gatsby-image';
 import Layout from '../components/Layout';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-const Template = () => {
-  return <div>post template</div>;
+const Template = ({ data }) => {
+  const { title, date, author, image } = data.mdx.frontmatter;
+  const { body } = data.mdx;
+  const img = image.childImageSharp.fluid;
+  return (
+    <Layout>
+      <section className={styles.template}>
+        <AniLink fade to="/" className={styles.link}>
+          back to all posts
+        </AniLink>
+        <div className={styles.info}>
+          <h1>{title}</h1>
+          <h4>
+            <span>by {author}</span> / <span>{date}</span>
+          </h4>
+        </div>
+        <Image fluid={img}></Image>
+        <div className={styles.content}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </div>
+      </section>
+    </Layout>
+  );
 };
+
+export const query = graphql`
+  query getPost($slug: String!) {
+    mdx(frontmatter: { id: { eq: $slug } }) {
+      frontmatter {
+        title
+        date(formatString: "MMMM Do, YYYY")
+        author
+        image {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
+      body
+    }
+  }
+`;
 
 export default Template;

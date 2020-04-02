@@ -5,7 +5,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 const PostCard = ({
   excerpt,
-  frontmatter: { title, slug, date, author, image }
+  frontmatter: { title, id, date, author, image }
 }) => {
   const img = image.childImageSharp.fluid;
   return (
@@ -20,7 +20,7 @@ const PostCard = ({
             <span>by {author}</span> / <span>{date}</span>
           </h6>
           <p>{excerpt}</p>
-          <AniLink fade to={slug} className={styles.link}>
+          <AniLink fade to={id} className={styles.link}>
             read more
           </AniLink>
         </div>
