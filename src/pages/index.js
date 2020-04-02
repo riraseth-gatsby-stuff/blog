@@ -11,7 +11,7 @@ const getPosts = graphql`
           excerpt
           frontmatter {
             title
-            slug
+            id
             date(formatString: "MMMM Do, YYYY")
             author
             image {
